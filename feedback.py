@@ -34,6 +34,10 @@ root.minsize(width=950, height=500)
 root.maxsize(width=950, height=500)
 root.config(bg='#ADD8E6')
 
+def dot():
+    root.destroy()
+    os.system('python 3dotad.py')
+
 Feedback = Label(root, text='Feedback', fg='black', bg='#ADD8E6', font=('Times', 23, 'bold'))
 Feedback.place(x=350, y=5)
 
@@ -57,6 +61,9 @@ message_feedback_box.place(x=300,y=230)
 
 btn_submit = Button(root, text='Submit Feedback', fg='black', bg='#276B80', command=submit_feedback)
 btn_submit.place(x=380,y=355)
+
+features_button = Button(root, text="☰", bg="#337AB7", fg="white", font=("Helvetica", 14), command=dot)
+features_button.place(x=700, y=50)
 
 def add():
     print("Adding feedback to database...")

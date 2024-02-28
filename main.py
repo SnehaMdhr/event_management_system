@@ -13,9 +13,9 @@ root.resizable(0,0)
 
 header = Canvas(root, width=1600, height=300, bg="#001F3F")
 header.create_text(550, 130, text="KASA-\nThe Event Manager", fill="white", font=('Cochin', 80))
-header.create_text(1150, 30, text="kasaeventmanager@gmail.com.np", fill="white", font=('Times', 20))
-header.create_text(1150, 70, text="9810342323, 9825367231", fill="white", font=('Times', 20))
-header.create_text(1150, 100, text="Mahakavi Marg, Kathmandu", fill="white", font=('Times', 20))
+header.create_text(1330, 30, text="kasaeventmanager@gmail.com.np", fill="white", font=('Times', 20))
+header.create_text(1330, 70, text="9810342323, 9825367231", fill="white", font=('Times', 20))
+header.create_text(1330, 100, text="Mahakavi Marg, Kathmandu", fill="white", font=('Times', 20))
 
 logo = (Image.open("KASA.png"))
 resized_image = logo.resize((20, 20))
@@ -24,7 +24,7 @@ new_image = ImageTk.PhotoImage(resized_image)
 header.create_image(30, 60, anchor=NW, image=new_image)
 header.place(x=0, y=0)
 
-mid = Canvas(root, width=1400, height=1300, bg="white")
+mid = Canvas(root, width=1600, height=1300, bg="white")
 mid.place(x=0, y=300)
 
 teamwork = (Image.open("TeamWork.jpg"))
@@ -41,11 +41,9 @@ mid.create_text(320, 160,
 
 
 def open_student_login():
-    root.destroy()
     os.system('python log.py')
 
 def open_admin_login():
-    root.destroy()
     os.system('python adminlogin.py')
     
 btn_student = Button(text="Student", height=2, width=15, bg='#605EC2', fg='Black', font='Helvetica 12 bold', command=open_student_login)

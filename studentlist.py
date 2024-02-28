@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 import sqlite3
 from PIL import ImageTk, Image
+import os
 
 def fetch_data():
     connection = sqlite3.connect("management.db")
@@ -35,6 +36,11 @@ def delete():
     except Exception as e:
         print("An error occurred:", e)
 
+
+def dot():
+    root.destroy()
+    os.system('python 3dotad.py')
+
 root = tk.Tk()
 root.title("KASA - The Event Manager")
 
@@ -60,6 +66,9 @@ resized_image = logo.resize((150, 150))
 new_image = ImageTk.PhotoImage(resized_image)
 header.create_image(0, 10, anchor="nw", image=new_image)
 header.pack(fill=tk.X)
+
+features_button = tk.Button(root, text="☰", bg="#337AB7", fg="white", font=("Helvetica", 14), command=dot)
+features_button.place(x=750, y=30)
 
 # Create the main content canvas
 mid = tk.Canvas(root, bg="white")

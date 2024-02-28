@@ -26,7 +26,6 @@ def dot():
     root.destroy()
     os.system('python 3dot.py')
 
-
 # Create main window
 root = tk.Tk()
 root.title("Event List Page")
@@ -38,16 +37,12 @@ bg = ImageTk.PhotoImage(image)
 background_label = tk.Label(root, image=bg)
 background_label.place(x=0, y=0, relwidth=1, relheight=1)
 
-# Event List Frame
-event_list_frame = tk.Frame(root)
-event_list_frame.pack(padx=20, pady=20, fill="both", expand=True)
-
 # Event List Heading
-heading_label = tk.Label(event_list_frame, text="Event List", font=("Helvetica", 20))
+heading_label = tk.Label(root, text="Event List", font=("Helvetica", 20))
 heading_label.grid(row=0, column=0, columnspan=3, pady=(0, 10))
 
 # Event List
-event_listbox = ttk.Treeview(event_list_frame, columns=("Name", "Date", "Location"), show="headings", height=15)
+event_listbox = ttk.Treeview(root, columns=("Name", "Date", "Location"), show="headings", height=15)
 event_listbox.heading("Name", text="Name")
 event_listbox.heading("Date", text="Date")
 event_listbox.heading("Location", text="Location")

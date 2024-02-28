@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 import sqlite3
 from plyer import notification  # Import the notification module
+import os
 
 # Create the 'events' table if not exists
 conn = sqlite3.connect("add.db")
@@ -15,6 +16,10 @@ cursor.execute("""CREATE TABLE IF NOT EXISTS events(
                )""")
 conn.commit()
 conn.close()
+
+def go_to_homepage():
+    root.destroy()
+    os.system('python Homepageforadmin.py')
 
 def add_record():
     # Get data from the entry widgets
@@ -33,6 +38,8 @@ def add_record():
     # Commit changes and close connection
     conn.commit()
     conn.close()
+    go_to_homepage()
+
 
     # Clear entry widgets
     name_entry.delete(0, tk.END)

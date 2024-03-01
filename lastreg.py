@@ -154,7 +154,7 @@ class Register:
         self.date_window = Toplevel(self.root)
         self.date_window.title("Choose Date of Birth")
         self.date_window.geometry("300x250")
-        self.cal = Calendar(self.date_window, selectmode="day", date_pattern="mm/dd/y")  # Define the Calendar widget
+        self.cal = Calendar(self.date_window, selectmode="day", date_pattern="dd/mm/y")  # Define the Calendar widget
         self.cal.pack(pady=10)
 
         submit_button = Button(self.date_window, text="Submit", command=self.grab_date)
@@ -237,7 +237,9 @@ class Register:
     def add(self):
         conn= sqlite3.connect("management.db")
         c=conn.cursor()
-        c.execute("INSERT INTO data(fname,lname,me,pass,day,month,year,gender) VALUES (?,?,?,?,?,?,?,?)",(self.f_name_entry.get(),self.l_name_entry.get(),self.contact_entry.get(),self.password_entry.get(),self.Day.get(),self.Months.get(),self.Year.get(),self.selected_gender.get()))
+        c.execute("INSERT INTO data(fname,lname,me,pass,day,month,year,gender) VALUES (?,?,?,?,?,?,?,?)",
+                  (self.f_name_entry.get(),self.l_name_entry.get(),self.contact_entry.get(),self.password_entry.get(),self.Day.get(),
+                   self.Months.get(),self.Year.get(),self.selected_gender.get()))
         conn.commit()
         conn.close()
         self.f_name_entry.delete(0,END)
@@ -252,5 +254,6 @@ class Register:
     
 # Create an instance of the Register class to run it
 root = Tk()
+
 Register(root)
 root.mainloop()

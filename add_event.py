@@ -3,9 +3,17 @@ from tkinter import ttk
 import sqlite3
 from tkinter import messagebox
 import os
-
-DATABASE_FILE = "add.db"
-
+conn = sqlite3.connect("add.db")
+cursor = conn.cursor()
+cursor.execute("""CREATE TABLE IF NOT EXISTS events(
+               ID INTEGER PRIMARY KEY AUTOINCREMENT,
+               name TEXT,
+               date TEXT,
+               location TEXT,
+            description TEXT
+               )""")
+conn.commit()
+conn.close()
 def go_to_homepage():
     root.destroy()
     os.system('python Homepageforadmin.py')
@@ -22,7 +30,7 @@ def add_record():
 
     conn = None  # Initialize connection variable outside the try block
     try:
-        conn = sqlite3.connect(DATABASE_FILE)
+        conn = sqlite3.connect("add.db")
         cursor = conn.cursor()
         cursor.execute("INSERT INTO events (name, date, location, description) VALUES (?, ?, ?, ?)", (name, date, location, description))
         conn.commit()
@@ -33,10 +41,10 @@ def add_record():
     finally:
         if conn:  # Check if connection is not None before trying to close
             conn.close()
-            name_entry.delete(0, tk.END)
-            date_entry.delete(0, tk.END)
-            location_entry.delete(0, tk.END)
-            description_entry.delete(0, tk.END)
+    name_entry.delete(0, tk.END)
+    date_entry.delete(0, tk.END)
+    location_entry.delete(0, tk.END)
+    description_entry.delete(0, tk.END)
 
 root = tk.Tk()
 root.title("Add Event Record")

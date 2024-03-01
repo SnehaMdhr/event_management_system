@@ -173,7 +173,7 @@ class AdminRegister:
         self.date_window = Toplevel(self.root)
         self.date_window.title("Choose Date of Birth")
         self.date_window.geometry("300x250")
-        self.cal = Calendar(self.date_window, selectmode="day", date_pattern="mm/dd/y")  # Define the Calendar widget
+        self.cal = Calendar(self.date_window, selectmode="day", date_pattern="dd/mm/y")  # Define the Calendar widget
         self.cal.pack(pady=10)
 
         submit_button = Button(self.date_window, text="Submit", command=self.grab_date)

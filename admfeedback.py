@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 import sqlite3
 from PIL import ImageTk, Image
+import os
 
 conn = sqlite3.connect("feedback.db")
 cursor = conn.cursor()
@@ -30,6 +31,11 @@ def populate_table():
     for record in data:
         table.insert("", tk.END, values=record)
 
+
+def dot():
+    root.destroy()
+    os.system('python 3dotad.py')
+
 root = tk.Tk()
 root.title("KASA - The Event Manager")
 root.configure(bg='#ADD8E6')
@@ -49,6 +55,8 @@ header.pack(fill=tk.X)
 mid = tk.Canvas(root, bg="white")
 mid.pack(fill=tk.BOTH, expand=True)
 
+features_button = tk.Button(root, text="☰", bg="#337AB7", fg="white", font=("Helvetica", 14), command=dot)
+features_button.place(x=750, y=30)
 
 
 # Styling the Treeview

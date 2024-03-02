@@ -88,7 +88,7 @@ def cancel():
 
 def login():
     root.destroy()
-    os.system('python adminlogin.py')
+    os.system('python main.py')
 
 def add():
     conn = sqlite3.connect("admin.db")

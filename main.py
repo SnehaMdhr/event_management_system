@@ -4,9 +4,6 @@ import os
 from PIL import Image
 
 
-
-
-
 root = Tk()
 root.geometry("1570x1570")
 root.resizable(0,0)

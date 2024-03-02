@@ -85,7 +85,7 @@ def cancel():
 
 def login():
     root.destroy()
-    os.system('python log.py')
+    os.system('python main.py')
 
 
 
